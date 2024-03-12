@@ -17,7 +17,7 @@ cd build/tmp/tdlib;
 export CC=clang-18;
 export CXX=clang++-18;
 
-cmake -DCMAKE_BUILD_TYPE=Release ../../../modules/td -D -DCMAKE_INSTALL_PREFIX:PATH=../../tdlib;
+cmake -DCMAKE_BUILD_TYPE=Release ../../../modules/td -DCMAKE_INSTALL_PREFIX:PATH=../../tdlib;
 cmake --build . --target install -j$(nproc);
 
 cd /;
