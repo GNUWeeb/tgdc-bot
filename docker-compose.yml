@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  tgdc-bot:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 10.33.33.0/24
+        gateway: 10.33.33.1
+    driver_opts:
+      com.docker.network.bridge.name: tgdc-bot
+
+services:
+  tgdc-web:
+    restart: always
+    image: nginx:latest
+    networks:
+      tgdc-bot:
+        ipv4_address: 10.33.33.2
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./:/var/www/tgdc-bot
+
+  tgdc-master:
+    restart: always
+    build:
+      context: ./docker_images/tgdc-ubuntu
+      dockerfile: Dockerfile
+    depends_on:
+      - tgdc-web
+    networks:
+      tgdc-bot:
+        ipv4_address: 10.33.33.3
+    volumes:
+      - ./:/var/www/tgdc-bot
+    command: ["/bin/bash", "/var/www/tgdc-bot/entrypoint.sh"]
