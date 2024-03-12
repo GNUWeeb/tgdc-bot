@@ -3,13 +3,6 @@
 set -e;
 
 cd /var/www/tgdc-bot/;
-
-apt-get update -y;
-apt-get install -y sudo build-essential cmake curl wget autoconf make gperf libssl-dev zlib1g-dev lsb-release wget software-properties-common gnupg;
-
-wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh;
-bash /tmp/llvm.sh 18;
-
 mkdir -pv build/tmp/tdlib;
 mkdir -pv build/lib/tdlib;
 

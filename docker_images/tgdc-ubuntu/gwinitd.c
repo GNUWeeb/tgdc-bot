@@ -9,6 +9,7 @@ int main(void)
 {
 	struct sigaction act = { .sa_handler = SIG_IGN };
 
+	puts("initd started!");
 	sigaction(SIGCHLD, &act, NULL);
 	sigaction(SIGHUP, &act, NULL);
 
