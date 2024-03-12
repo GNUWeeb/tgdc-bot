@@ -3,14 +3,14 @@
 set -e;
 
 cd /var/www/tgdc-bot/;
-mkdir -pv build/tmp/tdlib;
-mkdir -pv build/lib/tdlib;
+mkdir -pv build/tmp/td;
+mkdir -pv build/lib/td;
 
-cd build/tmp/tdlib;
+cd build/tmp/td;
 export CC=clang-18;
 export CXX=clang++-18;
 
-cmake -DCMAKE_BUILD_TYPE=Release ../../../modules/td -DCMAKE_INSTALL_PREFIX:PATH=../../tdlib;
+cmake -DCMAKE_BUILD_TYPE=Release ../../../modules/td -DCMAKE_INSTALL_PREFIX:PATH=../../lib/td;
 cmake --build . --target install -j$(nproc);
 
 cd /;
