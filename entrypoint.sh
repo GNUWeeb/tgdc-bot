@@ -5,7 +5,7 @@ set -e;
 cd /var/www/tgdc-bot/;
 
 apt-get update -y;
-apt-get install -y build-essential cmake curl wget autoconf make;
+apt-get install -y build-essential cmake curl wget autoconf make gperf libssl-dev;
 
 mkdir -pv build;
 cd build;
